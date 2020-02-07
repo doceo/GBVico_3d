@@ -1,25 +1,36 @@
 
-spessore=5; //da decidere se uguale per tutte oppure no
-altezza=50; //uguale per tutte le pareti
-lunghezza_uno=73; //lunghezza della prima parete
-lunghezza_due = 97; //lunghezza della seconda parete
+//Spessore parete del corridoio, con la porta
+spessore_uno=5; 
+//lunghezza della prima parete
+lunghezza_uno=73; 
 
-// la distanza della porta deve essere considerata in  relazione all'angolo tra le pareti
-altezza_porta = 20; 
+//spessore parete divisoria degli ambienti
+spessore_due=5;
+lunghezza_due = 97; 
+//
+//altezza uguale per tutte le pareti
+altezza=75; 
+
+
+//dati relativi alla porta
+altezza_porta = 25; 
 larghezza_porta = 12;
+//distanza della porta a partire dall'angolo esterno
 distanza_porta = 46;
 
-//parametri relativi alle finestre
+//parametri relativi alle finestre, ma non ancora inseriti nel modello
 lunghezza_fin=15;
  altezza_fin=11;
 
 due_pareti_porta();
 
 module due_pareti(){
-   
-    cube([lunghezza_due, spessore, altezza]);
-   rotate([0,0,90])    cube([lunghezza_uno, spessore, altezza]);
-    
+   union(){
+    cube([lunghezza_due, spessore_due, altezza]);
+   rotate([0,0,90])    cube([lunghezza_uno, spessore_uno, altezza]);
+    translate([25,spessore_uno/2,-3])cylinder(10, 1.5,1.5, $fn=50);
+    translate([40,spessore_uno/2,-3])cylinder(10, 1.5,1.5, $fn=50);
+   }
 }
 
 
@@ -27,7 +38,7 @@ module due_pareti_porta(){
     
     difference(){
         due_pareti();
-        translate([-spessore,distanza_porta+spessore,0]) cube([spessore,larghezza_porta,altezza_porta]);
+        translate([-spessore_due,distanza_porta,0]) cube([spessore_due,larghezza_porta,altezza_porta]);
     }
 }
 
