@@ -28,8 +28,8 @@ module due_pareti(){
    union(){
     cube([lunghezza_due, spessore_due, altezza]);
    rotate([0,0,90])    cube([lunghezza_uno, spessore_uno, altezza]);
-    translate([25,spessore_uno/2,-3])cylinder(10, 1.5,1.5, $fn=50);
-    translate([40,spessore_uno/2,-3])cylinder(10, 1.5,1.5, $fn=50);
+    translate([15,spessore_uno/2,-3])cylinder(10, 1.5,1.5, $fn=50);
+    translate([lunghezza_uno-10,spessore_uno/2,-3])cylinder(10, 1.5,1.5, $fn=50);
    }
 }
 
