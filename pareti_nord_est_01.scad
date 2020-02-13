@@ -11,7 +11,6 @@ lunghezza_due = 97;
 //altezza uguale per tutte le pareti
 altezza=75; 
 
-
 //dati relativi alla porta
 altezza_porta = 25; 
 larghezza_porta = 12;
