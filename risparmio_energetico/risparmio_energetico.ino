@@ -21,11 +21,11 @@ uint32_t delayMS;
 
 int buzzer=5;//imposta il pin IO digitale del BUZZER
 
-int fotoresistenza_Pin = A0;     // il centro del partitore lo colleghiamo al pin 0
+int fotoresistenza_Pin = A1;     // il centro del partitore lo colleghiamo al pin 0
 int fotoresistenza_lettura;     // il valore che conterrà la lettura
 int ledPin = 3;      // select the pin for the LED
 int degree;
-int condizionatore = 4;
+int condizionatore = 7;
 int luce = 8;
 
 
@@ -73,7 +73,10 @@ void loop() {
 
 Serial.print("Valore letto = ");
 Serial.print(fotoresistenza_lettura);     //stampiamo il valore
-degree = map(fotoresistenza_lettura, 0, 1023, 0, 180);
+int degreeMap = map(fotoresistenza_lettura, 0, 1023, 0, 150);
+
+degree = 180 - degreeMap;
+Serial.println(degree);
 // Mettiamo delle soglie di giudizio
 analogWrite(ledPin, degree);   
 if (degree<40){
